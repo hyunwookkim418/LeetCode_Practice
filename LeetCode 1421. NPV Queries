@@ -1,0 +1,6 @@
+#MySQL
+
+SELECT q.id, q.year, IFNULL(n.npv, 0) AS npv
+FROM Queries AS q 
+LEFT JOIN NPV AS n 
+ON q.id=n.id and q.year =n.year; 
