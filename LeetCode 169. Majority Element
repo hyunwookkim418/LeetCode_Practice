@@ -1,0 +1,24 @@
+#C++
+
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        int count = 0;
+        int arrayElement = 0;
+        for(auto num : nums){
+            if(count == 0)
+                {
+                    arrayElement = num;
+                }
+            if(arrayElement == num)
+                {
+                    count++; 
+                }
+            else
+                {
+                    count--;
+                }
+        }
+        return arrayElement;
+    }
+};
