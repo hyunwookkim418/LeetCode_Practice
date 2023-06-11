@@ -1,0 +1,6 @@
+#MySQL
+
+SELECT s.product_id, SUM(s.quantity) AS total_quantity 
+FROM Sales AS s 
+GROUP BY product_id
+ORDER BY product_id ASC;
