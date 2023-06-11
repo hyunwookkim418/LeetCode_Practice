@@ -1,0 +1,23 @@
+#C++
+
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& a) {
+        int i, j;
+        string ans="";
+        char common_prefix;
+        for(i = 0; i < a[0].size(); i++)
+        {
+            common_prefix = a[0][i];
+            for(j = 0;j < a.size(); j++)
+            {
+                if(common_prefix != a[j][i])
+                {
+                    return ans;
+                }
+            }
+            ans+=common_prefix;
+        }
+        return ans;      
+    }
+};
