@@ -1,0 +1,21 @@
+#C++
+
+class Solution {
+public:
+    bool isSubsequence(string s, string t) {
+        int idx=0;
+        for(int i=0; i < s.size(); i++)
+            {
+                int found = t.find(s[i], idx);
+                if (found != string::npos)
+                {
+                    idx=found+1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        return 1;
+    }
+};
