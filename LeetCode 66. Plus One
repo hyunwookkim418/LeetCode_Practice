@@ -1,0 +1,29 @@
+#C++
+
+#include <vector>
+#include <string>
+
+class Solution {
+public:
+    std::vector<int> plusOne(std::vector<int>& digits) {
+        std::vector<int> result;
+        int carry = 1;
+        
+        for (int i = digits.size() - 1; i >= 0; i--) 
+        {
+            int sum = digits[i] + carry;
+            result.push_back(sum % 10);
+            carry = sum / 10;
+        }
+        
+        if (carry > 0) 
+        {
+            result.push_back(carry);
+        }
+        
+        // Reverse the result to get the correct order
+        std::reverse(result.begin(), result.end());
+        
+        return result;
+    }
+};
