@@ -9,6 +9,28 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
+# Recursive approach
+class Solution {
+public:
+    int power=0;
+    int num=0;
+    void func(ListNode *head){
+        if(head==NULL){
+            return;
+        }
+        func(head->next);
+        num=num+(head->val*pow(2,power));
+        power++;
+    }
+    int getDecimalValue(ListNode * head) {
+        func(head);
+        return num;
+    }
+};
+
+
+# Iterative approach
 class Solution {
 public:
     int getDecimalValue(ListNode* head){
