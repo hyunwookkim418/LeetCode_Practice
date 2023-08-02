@@ -1,0 +1,54 @@
+#C++
+
+class Solution {
+public:
+    int networkDelayTime(vector<vector<int>>& times, int n, int k) {
+        // Create an adjacency list using the classic pair method.
+        vector<pair<int, int>> adj[n + 1]; 
+
+        // Create a min heap using priority queue to get the minimum distance.
+        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+
+        // Create a directed adjacency list.
+        for (auto it : times) {
+            adj[it[0]].push_back({it[1], it[2]});
+        }
+
+        // Set all distances from node k to initially be infinite.
+        vector<int> dist(n + 1, 1e9);
+
+        // The distance from node k to itself is 0.
+        dist[k] = 0;
+        pq.push({0, k});
+
+        // Start BFS traversal using iteration.
+        while (!pq.empty()) {
+            auto it = pq.top();
+            pq.pop();
+            int dis = it.first;
+            int node = it.second;
+
+            // Now, check each node one edge at a time.
+            for (auto it : adj[node]) {
+                int adjnode = it.first;
+                int wt = it.second;
+
+                // If a shorter distance is found, update the distance for that node.
+                if (dist[adjnode] > dis + wt) {
+                    dist[adjnode] = wt + dis;
+                    pq.push({dis + wt, adjnode});
+                }
+            }
+        }
+
+        // Find the maximum distance from node k, which represents the time taken to spread through the entire graph.
+        int ans = 0; 
+        for (int i = 1; i < dist.size(); i++) {
+            ans = max(ans, dist[i]);
+        }
+
+        // If any node was not visited, return -1.
+        if (ans == 1e9) return -1;
+        return ans;      
+    }
+};
