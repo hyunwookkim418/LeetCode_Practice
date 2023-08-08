@@ -36,7 +36,17 @@ void Solution()
         int Cost = -PQ.top().first;
         int Cur = PQ.top().second;
         PQ.pop();
- 
+
+        // The default behavior of the priority_queue in C++
+        // is to order elements in descending order based on their priority.
+        // For example, if we insert pq.push({-300, 1}); pq.push({-200, 4}); pq.push({-100, 5}),
+        // pq.push({-100, 5}) will be at the top of the priority queue.
+        // Since the purpose of this problem is to find the shortest path,
+        // placing a minus (-) sign before the distance inputs and calculating distances
+        // allows us to obtain the shortest path without using a min priority queue
+        // (priority_queue <int, vector<int>, greater<int>> gq;).
+
+
         for (int i = 0; i < adj[Cur].size(); i++)
         {
             int Next = adj[Cur][i].first;
