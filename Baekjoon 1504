@@ -1,7 +1,88 @@
 # C++
 # Dijkstra's algorithm
 
+#1 More efficient because this code calls Dijkstra three times.
+#include <iostream>
+#include <queue>
+#include <vector>
+using namespace std;
 
+#define MAX 20010
+#define INF 987654321
+
+vector<pair<int, int>> adj[MAX];
+int Dist[MAX];
+int V, E, V1, V2;
+
+void input() {
+    cin >> V >> E;
+
+    for (int i = 0; i < E; i++) {
+        int a, b, c;
+        cin >> a >> b >> c;
+
+        adj[a].push_back(make_pair(b, c));
+        adj[b].push_back(make_pair(a, c));
+    }
+}
+
+void Dijkstra(int s) {
+    for (int i = 1; i <= V; i++) {
+        Dist[i] = INF;
+    }
+
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> PQ;
+    Dist[s] = 0;
+    PQ.push(make_pair(Dist[s], s));
+
+    while (!PQ.empty()) {
+        int cost = PQ.top().first;
+        int curr = PQ.top().second;
+        PQ.pop();
+
+        for (int i = 0; i < adj[curr].size(); i++) {
+            int Next = adj[curr][i].first;
+            int n_cost = adj[curr][i].second;
+
+            if (Dist[Next] > cost + n_cost) {
+                Dist[Next] = cost + n_cost;
+                PQ.push(make_pair(Dist[Next], Next));
+            }
+        }
+    }
+}
+
+int main() {
+
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    input();
+    cin >> V1 >> V2;
+
+    Dijkstra(1);
+    const int oneToV1 = Dist[V1];
+    const int oneToV2 = Dist[V2];
+
+    Dijkstra(V1);
+    const int V1ToV2 = Dist[V2];
+    const int V1ToEnd = Dist[V];
+
+    Dijkstra(V2);
+    const int V2ToV1 = Dist[V1];
+    const int V2ToEnd = Dist[V];
+
+    int ans = min(oneToV1 + V1ToV2 + V2ToEnd, oneToV2 + V2ToV1 + V1ToEnd);
+
+    if (ans >= INF || ans < 0) cout << -1; // Corrected the condition
+    else cout << ans;
+
+    return 0;
+}
+
+
+#2 Less efficient because this code calls Dijkstra five times.
 #include <iostream>
 #include <vector>
 #include <queue>
