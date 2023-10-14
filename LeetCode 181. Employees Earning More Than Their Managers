@@ -1,0 +1,4 @@
+select name as Employee
+
+from Employee 
+where salary > (select salary from Employee as Manager where Employee.managerId = Manager.id);
