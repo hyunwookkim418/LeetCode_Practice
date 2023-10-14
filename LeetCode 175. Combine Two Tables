@@ -1,0 +1,17 @@
+#select firstName, lastName, city, state from Person 
+select firstName, lastName,
+case
+  when p.personId = a.personId
+  then a.city
+  else Null
+end as city,
+
+case
+  when p.personId = a.personId
+  then a.state
+  else Null
+end as state
+
+from Person p
+left join Address a 
+on p.personId = a.personId;
