@@ -1,4 +1,13 @@
-select name as Employee
+#Solution 1
+select Employee.name as Employee
+from Employee 
+left join Employee as M
+on Employee.managerId = M.id;
+where Employee.salary > M.salary;
 
+
+
+#Solution 2
+select name as Employee
 from Employee 
 where salary > (select salary from Employee as Manager where Employee.managerId = Manager.id);
