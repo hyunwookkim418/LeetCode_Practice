@@ -1,4 +1,11 @@
-#select firstName, lastName, city, state from Person 
+#solution 1
+select firstName, lastName, city, state, p.personId, a.personId
+from Person p
+inner JOIN Address a ON p.personId = a.personId
+
+
+
+#solution 2
 select firstName, lastName,
 case
   when p.personId = a.personId
