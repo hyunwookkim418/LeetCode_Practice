@@ -1,0 +1,16 @@
+# Solution 1
+
+select s.name
+from orders o join company c on ( c.name = 'RED' and c.com_id = o.com_id )
+right join salesperson s on s.sales_id = o.sales_id
+where o.sales_id is null
+
+# Solution 2
+select s.name
+from salesperson s
+where s.sales_id NOT IN 
+    (select o.sales_id
+    from orders o
+    left join company c 
+    on o.com_id = c.com_id
+    where c.name = 'RED');
