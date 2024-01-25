@@ -1,3 +1,9 @@
+#1 faster
 select tweet_id 
 from Tweets
 where length(content) > 15
+
+#2 also works
+select tweet_id
+from Tweets
+where char_length(content) > 15
