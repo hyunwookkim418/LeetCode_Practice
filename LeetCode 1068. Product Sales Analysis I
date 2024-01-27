@@ -1,6 +1,12 @@
 #MySQL
 
-SELECT p.product_name, s.year, s.price
-FROM Sales AS s
-INNER JOIN Product AS p
-ON s.product_id = p.product_id;
+#1
+select p.product_name, s.year, s.price
+from Sales AS s
+inner join Product as p
+on s.product_id = p.product_id;
+
+#2
+select product_name, year, price
+from Sales 
+left join  Product using (product_id);
