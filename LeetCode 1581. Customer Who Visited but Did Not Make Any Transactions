@@ -1,8 +1,14 @@
-#C++
+#1
+select customer_id, count(customer_id) as count_no_trans 
+from Visits v
+left join Transactions t 
+on v.visit_id = t.visit_id
+where transaction_id is null
+group by customer_id
 
-SELECT customer_id, COUNT(v.visit_id) AS count_no_trans
-FROM Visits AS v
-WHERE NOT EXISTS (SELECT visit_id FROM Transactions AS t
-                    WHERE v.visit_id = t.visit_id)
-GROUP BY v.customer_id
-ORDER BY count_no_trans DESC;
+#2
+select customer_id, count(v.visit_id) as count_no_trans
+from Visits v
+where not exists (select visit_id from Transactions t
+                    where v.visit_id = t.visit_id)
+group by v.customer_id
