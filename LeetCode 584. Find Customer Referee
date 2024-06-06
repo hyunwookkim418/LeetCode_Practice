@@ -15,3 +15,17 @@ where referee_id <> 2 or coalesce(referee_id, 0) = 0;
 select name 
 from Customer
 where referee_id != "2" or referee_id is null
+
+# My explanation
+This problem asks us to find the customers' names who are not referred by referee_id = 2. 
+To select names which are not referred by referee_id = 2, we can simply use the condition "referee_id <> 2". 
+However, if we only use this condition, the code will only return "Zack" in the output table 
+because MySQL does not check for NULL values by default. 
+Therefore, we need to add an additional condition to select NULL values.
+There are two ways to select NULL values. First, we can use a condition like "referee_id IS NULL". 
+Alternatively, we can use the COALESCE function, which finds the first non-null value. 
+We can write the condition as "COALESCE(referee_id, 0) = 0". If a NULL value is passed into this function, 
+COALESCE will return 0, which will satisfy the condition.
+By using the condition "referee_id <> 2 OR COALESCE(referee_id, 0) = 0", 
+we can find values where referee_id is either not equal to 2 or is NULL. 
+As a side note, we need to use OR instead of AND because we need the union, not the intersection, of these two conditions.
