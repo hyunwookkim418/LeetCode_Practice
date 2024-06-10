@@ -7,3 +7,9 @@ where length(content) > 15
 select tweet_id
 from Tweets
 where char_length(content) > 15
+
+# My explanation
+This problem requires us to filter out invalid tweets from the table named "Tweets." 
+Tweets are considered invalid if their length is strictly greater than 15 characters. 
+To filter these invalid tweets, we can use the char_length() function 
+and apply a condition like WHERE char_length(content) > 15.
