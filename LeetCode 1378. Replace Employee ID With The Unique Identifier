@@ -9,3 +9,17 @@ select unique_id, a.name
 from EmployeeUNI b
 right join Employees a
 on a.id=b.id;
+
+# My explanation
+To display the unique_id for each user, and assign a null value if a user does not have a unique_id, 
+we need to combine data from the Employees and EmployeeUNI tables. 
+The output table should have unique_id and name columns, 
+but the Employees table has the name column, while the EmployeeUNI table contains the unique_id.
+
+To achieve this, we can use a JOIN operation. 
+Specifically, we can use a LEFT JOIN to combine these two tables based on the Employees table. 
+This requires a common column for the JOIN condition, which in this case is the id column present in both tables.
+
+The LEFT JOIN keyword allows us to include all records from the Employees table (the left table)
+and the matching records from the EmployeeUNI table (the right table). 
+If there is no match, the result will show null for the columns from the EmployeeUNI table.
