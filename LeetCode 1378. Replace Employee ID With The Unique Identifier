@@ -22,4 +22,4 @@ This requires a common column for the JOIN condition, which in this case is the 
 
 The LEFT JOIN keyword allows us to include all records from the Employees table (the left table)
 and the matching records from the EmployeeUNI table (the right table). 
-If there is no match, the result will show null for the columns from the EmployeeUNI table.
+If there is no match, the result will show null for the columns.
