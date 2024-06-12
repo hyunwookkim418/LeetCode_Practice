@@ -24,5 +24,5 @@ which includes the product_id column. We can accomplish this by employing a Join
 to combine the two separate tables. For a Join operation to work, 
 the tables must share a common column, which in this case is product_id. 
 Using a Left Join will merge the Product table with the Sales table, 
-attaching the Product table to the left side and retaining all records from the Sales table, 
-even if there are no matching values. This approach enables us to obtain the desired output.
+attaching the Product table to the left side and retaining records from the Sales table, 
+if there are matching values. This approach enables us to obtain the desired output.
