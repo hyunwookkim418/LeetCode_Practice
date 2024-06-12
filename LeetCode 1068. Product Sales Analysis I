@@ -16,3 +16,13 @@ select p.product_name, s.year, s.price
 from Sales as s
 left join Product as p
 on s.product_id = p.product_id;
+
+# My explanation
+This problem requires returning data from the Sales table along with the product_name. 
+Since the Sales table doesn't contain product_name, we need to utilize the Product table, 
+which includes the product_id column. We can accomplish this by employing a Join operation 
+to combine the two separate tables. For a Join operation to work, 
+the tables must share a common column, which in this case is product_id. 
+Using a Left Join will merge the Product table with the Sales table, 
+attaching the Product table to the left side and retaining all records from the Sales table, 
+even if there are no matching values. This approach enables us to obtain the desired output.
