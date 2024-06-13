@@ -2,3 +2,10 @@
 select teacher_id, count(distinct subject_id) as cnt
 from Teacher
 group by teacher_id
+
+# My explanation
+This problem requires determining the number of unique subjects taught by each teacher. 
+To achieve this, we need to count the number of unique subjects 
+using the COUNT(DISTINCT column_name) function. 
+The DISTINCT keyword ensures that only unique values are counted. 
+Then, we need to group the results based on teacher_id.
