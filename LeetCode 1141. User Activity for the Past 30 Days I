@@ -4,3 +4,10 @@ where activity_date between '2019-06-28' and '2019-07-27'
 group by activity_date
 
 # between '2019-06-28' and '2019-07-27' NOT between 2019-06-28 and 2019-07-27
+
+# My explanation
+To find the daily active user count for the 30-day period ending on 2019-07-27 
+(inclusive of 2019-06-28 and 2019-07-27), we should group the data by activity_date 
+and then count the user_id or session_id without duplicates. 
+To ensure no duplicates are counted, we can use the DISTINCT keyword. 
+Additionally, when writing dates in SQL, we should enclose them in single quotation marks.
