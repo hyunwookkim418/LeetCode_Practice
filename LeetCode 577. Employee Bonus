@@ -11,3 +11,15 @@ from Employee e
 left join Bonus b
 on e.empId = b.empId
 where ifnull(bonus, 0) < 1000;
+
+# My Explanation
+To find the names of employees who receive a bonus of less than 1000, 
+we need to use a join operation to combine the Employee table and the Bonus table. 
+These two tables can be joined on the common column empID. 
+By using a LEFT JOIN operation, we attach the Bonus table to the Employee table, 
+ensuring that all employees are included even if they do not have a corresponding bonus entry.
+
+After performing the join, we can apply a condition to filter employees 
+whose bonus is less than 1000 or is null. 
+The SQL code for this operation is simple and 
+includes a WHERE clause to filter based on the bonus amount.
