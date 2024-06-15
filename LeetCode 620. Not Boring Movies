@@ -2,3 +2,10 @@ select id, movie, description, rating
 from Cinema
 where id % 2 = 1 and description <> "boring"
 order by rating desc
+
+# My explanation
+We need to filter out the movies with an odd-numbered ID and a description that is not "boring." 
+After that, we need to sort the results in descending order based on rating. 
+We can achieve this by using the condition WHERE id % 2 = 1 AND description <> "boring". 
+After that, we can employ the ORDER BY keyword to sort the results in descending order.
+
