@@ -11,3 +11,11 @@ from Triangle;
 # 3
 select x, y, z, if(x + y <= z or x + z <= y or y + z <= x, "No", "Yes") as triangle
 from Triangle
+
+# My explanation
+The problem requires determining whether three segments can form a triangle. 
+The fundamental principle is that the longest segment must be shorter than the sum of the other two segments. 
+If any combination violates this rule, the segments cannot form a triangle. 
+Therefore, we can check all combinations using a brute-force method, such as x + y <= z or x + z <= y or y + z <= x. 
+If any of these combinations violate the triangle principle, then it cannot be a triangle. 
+We can use an if statement like this: if (x + y <= z or x + z <= y or y + z <= x, "No", "Yes").
