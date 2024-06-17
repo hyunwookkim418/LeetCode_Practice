@@ -1,4 +1,14 @@
+# 1
 select user_id, count(follower_id) as followers_count
 from Followers
 group by user_id
 order by user_id asc
+
+# My explanation
+The problem requires us to return the number of followers for each user. 
+In the Followers table, the first column represents user_id, 
+and the second column represents follower_id. 
+For example, in the first row, 0 in the user_id column means that user 0 is followed by follower 1, 
+represented by 1 in the follower_id column. 
+To count the number of followers for each user, we can use the count() function with the distinct keyword 
+to select the unique number of followers. Finally, we can sort the results in ascending order using order by user_id.
