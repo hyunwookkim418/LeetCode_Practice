@@ -4,3 +4,8 @@ from Users
 order by user_id;
 
 # My explanation
+The problem requires changing the values of the name column. 
+Currently, the values randomly use lower and upper cases, but they should follow a uniform format. 
+Specifically, the first letter should be uppercase, and the subsequent substring should be lowercase. 
+After applying this condition with SUBSTRING, the two separate parts should be concatenated using CONCAT. 
+The code should look like CONCAT(UPPER(SUBSTRING(name, 1, 1)), LOWER(SUBSTRING(name, 2))) AS name.
