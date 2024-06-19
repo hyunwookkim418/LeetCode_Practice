@@ -11,3 +11,13 @@ from Weather
 join Weather w 
 on datediff(weather.recordDate, w.recordDate) = 1
     and weather.Temperature > w.Temperature
+
+# My explanation
+This question requires us to sort dates by their IDs with higher temperatures compared to their previous dates.
+To compare dates within the same rows, I intend to use a join operation applying the condition DATEDIFF(w2.recordDate, w1.recordDate) = 1. 
+In my initial attempt, I made a mistake by using w2.recordDate - w1.recordDate = 1. 
+This condition only considers days, not months and years. 
+However, the DATEDIFF() function considers the full date, including years and months.
+After creating a combined table, we can directly compare w2.temperature to w1.temperature. 
+If w2.temperature is greater than w1.temperature, it indicates a rising temperature.
+
