@@ -13,3 +13,17 @@ select max(num) as num
 from MyNumbers 
 where num in (select num from MyNumbers group by num having count(num) = 1)
 
+# My explanation
+This problem requires us to find the largest single number.
+To achieve the desired output, we need to satisfy two conditions:
+1. The largest value
+2. A single (non-repeating) number
+
+There is no way to satisfy these two different conditions with one single query.
+To apply two different conditions, I would like to use a subquery to limit the range.
+For example, if we first select only single numbers by using a subquery, 
+we can then choose the maximum value with the MAX function. 
+The syntax of a subquery can be somewhat complicated when you use it for the first time. 
+To limit the selection to only single numbers, we can write a condition like:
+WHERE num IN (SELECT num FROM MyNumbers GROUP BY num HAVING COUNT(num) = 1)
+
