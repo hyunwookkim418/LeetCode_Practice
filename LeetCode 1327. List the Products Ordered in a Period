@@ -1,6 +1,21 @@
+# 1
 select product_name, sum(o.unit) as unit
 from Products p
 left join Orders o on p.product_id = o.product_id
 where o.order_date between '2020-02-01' and '2020-02-29'
 group by p.product_id
 having unit >= 100
+
+# My explanation
+This problem involves selecting product_names that had at least 100 units ordered in February 2020, 
+along with their corresponding amounts. To begin, we should examine the provided tables: Products and Orders. 
+The Products table contains product_id, product_name, and product_category, 
+while the Orders table includes product_id, order_date, and unit. 
+From these tables, we only require product_name and unit information in the desired output table. 
+Therefore, a join operation using the common column product_id is necessary.
+
+Next, we can aggregate the data by grouping it by product_id to calculate the total unit amount for each product_name. 
+To satisfy the conditions of the query, two main criteria must be applied. 
+Firstly, we need to specify a date range for order_date to February 2020 using the WHERE clause. 
+Secondly, we should ensure that the sum of unit for each product_name is at least 100, 
+which requires the HAVING clause since it involves conditions related to aggregated data (SUM(unit)).
