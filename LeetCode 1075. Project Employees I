@@ -1,5 +1,13 @@
+# 1
 select project_id, round(avg(experience_years), 2) as average_years
 from Project p
 left join Employee e
 on p.employee_id = e.employee_id
 group by project_id
+
+# My explanation
+This problem requires us to find the average years of experience for all employees assigned to each project.
+As output, we need to provide project_id and average_years accordingly. 
+The Project table contains the project_id column, and the Employee table contains the experience_years column. 
+We can combine these two tables using a join operation 
+and calculate the average experience_years using a group by project_id condition.
