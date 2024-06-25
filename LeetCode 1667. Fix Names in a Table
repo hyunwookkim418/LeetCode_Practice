@@ -3,6 +3,11 @@ select user_id, concat(upper(substring(name, 1, 1)), lower(substring(name, 2)))a
 from Users
 order by user_id;
 
+# 2
+select user_id, concat(upper(SUBSTRING(name,1, 1)), lower(SUBSTRING(name, 2, length(name)))) as name
+from Users
+order by user_id
+
 # My explanation
 The problem requires changing the values of the name column. 
 Currently, the values randomly use lower and upper cases, but they should follow a uniform format. 
