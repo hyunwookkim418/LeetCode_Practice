@@ -1,5 +1,14 @@
+# 1
 select name as Customers
 from Customers
 Left join Orders
 on Customers.id = Orders.customerId
 where customerId is null;
+
+# 2
+SELECT NAME AS CUSTOMERS
+FROM CUSTOMERS
+WHERE ID NOT IN (
+	SELECT CUSTOMERID 
+	FROM ORDERS);
+
