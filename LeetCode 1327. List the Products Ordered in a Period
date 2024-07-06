@@ -6,6 +6,8 @@ where o.order_date between '2020-02-01' and '2020-02-29'
 group by p.product_id
 having unit >= 100
 
+07/05/24
+
 # My explanation
 This problem involves selecting product_names that had at least 100 units ordered in February 2020, 
 along with their corresponding amounts. To begin, we should examine the provided tables: Products and Orders. 
