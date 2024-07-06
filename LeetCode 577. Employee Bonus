@@ -12,6 +12,23 @@ left join Bonus b
 on e.empId = b.empId
 where ifnull(bonus, 0) < 1000;
 
+#3 
+SELECT
+    e.name,
+    b.bonus
+FROM (SELECT
+          emp_id,
+          name
+      FROM employee
+      WHERE emp_id NOT IN (SELECT
+                               emp_id
+                           FROM bonus
+                           WHERE bonus >= 1000
+						  )
+) AS e
+LEFT OUTER JOIN bonus AS b
+ON e.emp_id = b.emp_id; 			
+
 # My Explanation
 To find the names of employees who receive a bonus of less than 1000, 
 we need to use a join operation to combine the Employee table and the Bonus table. 
