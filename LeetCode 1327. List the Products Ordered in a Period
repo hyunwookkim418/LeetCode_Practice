@@ -6,7 +6,30 @@ where o.order_date between '2020-02-01' and '2020-02-29'
 group by p.product_id
 having unit >= 100
 
-07/05/24
+# 2
+SELECT
+    product_id,
+    SUM(unit) AS unit
+FROM orders
+WHERE EXTRACT(YEAR_MONTH FROM order_date) = '202002'
+GROUP BY product_id
+HAVING SUM(unit) >= 100;
+
+# 3
+SELECT
+    p.product_name,
+    o.unit
+FROM products AS p
+INNER JOIN (
+			SELECT
+                product_id,
+                SUM(unit) AS unit
+            FROM orders
+            WHERE EXTRACT(YEAR_MONTH FROM order_date) = '202002'
+            GROUP BY product_id
+            HAVING SUM(unit) >= 100
+) AS o
+ON p.product_id = o.product_id;
 
 # My explanation
 This problem involves selecting product_names that had at least 100 units ordered in February 2020, 
